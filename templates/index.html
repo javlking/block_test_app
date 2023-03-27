@@ -1,0 +1,22 @@
+{% include 'headers.html' %}
+{% include 'navbar.html' %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center" style="text-align: center;">
+        <div class="col col-sm-6" style="border: 1px solid black; margin: 1em 0.5em; border-radius: 10px;">
+            <form action="/start_test" method="post">
+                <div class="mb-3" style="margin: 1em 0.5em;">
+                    <input type="text" class="form-control mr-sm-2" name="name" id="name" required placeholder="Имя и Фамилия">
+                </div>
+                <div class="mb-3" style="margin: 1em 0.5em;">
+                    <input type="number" class="form-control mr-sm-2" name="group" id="group" required placeholder="Поток">
+                </div>
+                <div class="mb-3" style="margin: 1em 0.5em;">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Начать тест</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,27 @@
+<style>
+    h2{
+    white-space: pre-line;}
+    input[type="radio"] {
+          -ms-transform: scale(1.5); /* IE 9 */
+          -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+          transform: scale(1.5);
+          accent-color: green;
+        }
+</style>
+<div style="margin: 1em 0.5em;">
+    <h2>{{question["id"]}}) {{ question["question_text"] }}</h2><br>
+    <div class="mb-3">
+        {% if question['answer_1'] %}
+            <div class="form-check">
+                <p><input type="radio" class="form-check-input"  name="{{question['id']}}" id="{{question['answer_1']}}" value="1"><strong>{{question['answer_1']}}</strong></p>
+                <p><input type="radio" class="form-check-input"  name="{{question['id']}}" id="{{question['answer_2']}}" value="2"><strong>{{question['answer_2']}}</strong></p>
+                <p><input type="radio" class="form-check-input"  name="{{question['id']}}" id="{{question['answer_3']}}" value="3"><strong>{{question['answer_3']}}</strong></p>
+                <p><input type="radio" class="form-check-input"  name="{{question['id']}}" id="{{question['answer_4']}}" value="4"><strong>{{question['answer_4']}}</strong></p>
+            </div>
+        {% else %}
+            <div class="form-outline mb-4">
+              <textarea class="form-control" id="textAreaExample6" rows="3" name="{{question['id']}}">Не помню</textarea>
+            </div>
+        {% endif %}
+    </div>
+</div>

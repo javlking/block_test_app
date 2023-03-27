@@ -1,0 +1,27 @@
+{% include 'headers.html' %}
+{% include 'navbar.html' %}
+
+<style>
+    .row{
+    margin: 0;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <form action="/done/{{name}}" method="post" class="row justify-content-center">
+            <div class="row justify-content-center">
+                {% for question in questions %}
+                    <div class="col col-sm-9" style="border: 1px solid black; margin: 1em 0.5em; border-radius: 10px;">
+                        {% include 'question.html' %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row justify-content-center">
+                <button class="btn btn-primary" type="submit">Завершить</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,66 @@
+{% include 'headers.html' %}
+{% include 'navbar.html' %}
+<style>
+    h2{
+    white-space: pre-line;}
+    input[type="radio"] {
+          -ms-transform: scale(1.5); /* IE 9 */
+          -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+          transform: scale(1.5);
+          accent-color: red;
+        }
+    .row{
+    margin: 0;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <form action="/done/{{name}}" method="post"><br>
+            <h3 class="row justify-content-center"> Ваш результат: {{ answers }}/30</h3>
+            <div class="row justify-content-center">
+                {% for question in questions %}
+                    <div class="col col-sm-9" style="border: 1px solid black; margin: 1em 0.5em; border-radius: 10px; background: {% if user_answer[question['id']] == question['correct_answer'] %}#33FF33{% else %}#FF6666{% endif %}">
+                        <div style="margin: 1em 0.5em;">
+                            <h2>{{ question["question_text"] }}</h2><br>
+                            <div class="mb-3">
+                                {% if question['answer_1'] %}
+                                    <div class="form-check">
+                                        {% if user_answer[question['id']] == '1' %}
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="1" checked disabled><strong>{{question['answer_1']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="2" disabled><strong>{{question['answer_2']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="3" disabled><strong>{{question['answer_3']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="4" disabled><strong>{{question['answer_4']}}</strong></p>
+                                        {% elif user_answer[question['id']] == '2' %}
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="1" disabled><strong>{{question['answer_1']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="2" checked disabled><strong>{{question['answer_2']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="3" disabled><strong>{{question['answer_3']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="4" disabled><strong>{{question['answer_4']}}</strong></p>
+                                        {% elif user_answer[question['id']] == '3' %}
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="1" disabled><strong>{{question['answer_1']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="2" disabled><strong>{{question['answer_2']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="3" checked disabled><strong>{{question['answer_3']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="4" disabled><strong>{{question['answer_4']}}</strong></p>
+                                        {% elif user_answer[question['id']] == '4' %}
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="1" disabled><strong>{{question['answer_1']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="2" disabled><strong>{{question['answer_2']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="3" disabled><strong>{{question['answer_3']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="4" checked disabled><strong>{{question['answer_4']}}</strong></p>
+                                        {% else %}
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="1" disabled><strong>{{question['answer_1']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="2" disabled><strong>{{question['answer_2']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="3" disabled><strong>{{question['answer_3']}}</strong></p>
+                                            <p><input type="radio" class="form-check-input"  name="sold" id="sold" value="4" disabled><strong>{{question['answer_4']}}</strong></p>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+        </form>
+    </div>
+</div>
+
+{% include 'footer.html' %}
